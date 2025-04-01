@@ -1,0 +1,35 @@
+{
+  "name": "page-view-logger",
+  "version": "1.0.0",
+  "description": "A lightweight, zero-dependency page view logger for browser-based tracking",
+  "main": "dist/pageview-logger.v1.0.0.js",
+  "module": "dist/pageview-logger.v1.0.0.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/pageview-logger.v1.0.0.js",
+      "require": "./dist/pageview-logger.v1.0.0.js"
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --minify --format=esm --outfile=dist/pageview-logger.v1.0.0.js && tsc --emitDeclarationOnly --outDir dist",
+    "build:dev": "esbuild src/index.ts --bundle --format=esm --outfile=dist/pageview-logger.v1.0.0.js && tsc --emitDeclarationOnly --outDir dist",
+    "copy": "rm -f ../demo/public/pageview-logger.v1.0.0.js && cp dist/pageview-logger.v1.0.0.js ../demo/public/",
+    "watch": "esbuild src/index.ts --bundle --format=esm --outfile=dist/pageview-logger.v1.0.0.js --watch=forever --onEnd='yarn copy'",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "analytics",
+    "pageview",
+    "tracking",
+    "browser"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.25.2",
+    "typescript": "^5.0.0"
+  }
+}
